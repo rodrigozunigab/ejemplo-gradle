@@ -9,7 +9,10 @@ pipeline {
                         
                     }
                     stage("Sonar"){
-                        
+                        def scannerHome = tool 'sonar-scanner';    
+                        withSonarQubeEnv('sonar-server') { 
+                            sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=ejemplo-gradle -Dsonar.java.binaries=build"   
+                        }                        
                     }
                     stage("Run"){
                         
