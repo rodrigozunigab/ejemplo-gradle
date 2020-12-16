@@ -8,7 +8,7 @@ pipeline {
                 script {
                 //segun el valor del parametro se debe llamar a gradle o maven
                 echo "HERRAMIENTA SELECCIONADA: ${params.HERRAMIENTA}"                                
-                if params.HERRAMIENTA == 'gradle'){
+                if (params.HERRAMIENTA == 'gradle'){
                     	def ejecucion = load 'gradle.groovy'
 	                    ejecucion.call()
                 } else {
