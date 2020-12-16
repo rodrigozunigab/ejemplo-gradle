@@ -1,7 +1,6 @@
 pipeline {
     agent any
-    choice(name: 'HERRAMIENTA', choices: ['gradle', 'maven'], description: 'opcion de compilacion')
-
+    parameters { choice(name: 'HERRAMIENTA', choices: ['gradle', 'maven'], description: 'opcion de compilacion')}
     stages {
         stage('Pipeline') {
             steps {
