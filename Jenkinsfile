@@ -8,7 +8,7 @@ pipeline {
                 //segun el valor del parametro se debe llamar a gradle o maven
                 echo "HERRAMIENTA SELECCIONADA: ${params.HERRAMIENTA}"                                
                 if (params.HERRAMIENTA == 'gradle'){
-                        slackSend "Build Started"
+                        //slackSend "Build Started"
                     	def ejecucion = load 'gradle.groovy'
 	                    ejecucion.call()
                 } else {
