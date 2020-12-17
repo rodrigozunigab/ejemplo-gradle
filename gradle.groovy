@@ -6,7 +6,8 @@
 
 def call(){
   
-        stage("Build & test"){            
+        stage("Build & test"){   
+            env.TAREA =  env.STAGE_NAME        
             sh "./gradlew clean build"            
         }
         stage("Sonar"){

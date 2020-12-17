@@ -6,7 +6,9 @@ pipeline {
             steps {
                 script {
                 //segun el valor del parametro se debe llamar a gradle o maven
-                echo "HERRAMIENTA SELECCIONADA: ${params.HERRAMIENTA}"                                
+                env.TAREA = ''
+                echo "HERRAMIENTA SELECCIONADA: ${params.HERRAMIENTA}"   
+                echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"                             
                 if (params.HERRAMIENTA == 'gradle'){
                         //slackSend "Build Started"
                     	def ejecucion = load 'gradle.groovy'
@@ -20,4 +22,15 @@ pipeline {
             }
         }
     }
+
+    post {
+        success{
+            println env.TAREA
+        }
+
+        failure{
+
+        }
+    }
+
 }
