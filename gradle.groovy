@@ -6,10 +6,8 @@
 
 def call(){
   
-        stage("Build & test"){
-            slackSend "Build Started - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
-            sh "./gradlew clean build"
-            
+        stage("Build & test"){            
+            sh "./gradlew clean build"            
         }
         stage("Sonar"){
             def scannerHome = tool 'sonar-scanner';    
