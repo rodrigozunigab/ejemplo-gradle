@@ -25,10 +25,19 @@ pipeline {
 
     post {
         success{
-            println env.TAREA
+            //: [Nombre Alumno][Nombre Job][buildTool] Ejecución exitosa
+            println "Rodrigo Zuniga"            
+            println env.JOB_NAME
+            println params.HERRAMIENTA
+            println "Ejecucion exitosa"
         }
 
         failure{
+            //[Nombre Alumno][Nombre Job][buildTool] Ejecución fallida en stage [Stage]
+            println "Rodrigo Zuniga"            
+            println env.JOB_NAME
+            println params.HERRAMIENTA
+            println "Ejecución fallida en stage"
             println env.TAREA
         }
     }
