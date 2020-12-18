@@ -26,19 +26,15 @@ pipeline {
     post {
         success{
             //: [Nombre Alumno][Nombre Job][buildTool] Ejecución exitosa
-            println "Rodrigo Zuniga"            
-            println env.JOB_NAME
-            println params.HERRAMIENTA
-            println "Ejecucion exitosa"
+            env.RESULTADO =  "[Rodrigo Zuniga][${env.JOB_NAME}][${env.HERRAMIENTA}]Ejecucion exitosa"            
+            println env.RESULTADO
+            slackSend channel: '#general', message: 'Hello, world'
         }
 
         failure{
             //[Nombre Alumno][Nombre Job][buildTool] Ejecución fallida en stage [Stage]
-            println "Rodrigo Zuniga"            
-            println env.JOB_NAME
-            println params.HERRAMIENTA
-            println "Ejecución fallida en stage"
-            println env.TAREA
+            env.RESULTADO =  "[Rodrigo Zuniga][${env.JOB_NAME}][${env.HERRAMIENTA}]Ejecución fallida en stage [${env.TAREA}]"         
+            println env.RESULTADO            
         }
     }
 
