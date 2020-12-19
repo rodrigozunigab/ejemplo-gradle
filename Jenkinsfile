@@ -10,7 +10,6 @@ pipeline {
                 echo "HERRAMIENTA SELECCIONADA: ${params.HERRAMIENTA}"   
                 echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"                             
                 if (params.HERRAMIENTA == 'gradle'){
-                        //slackSend "Build Started"
                     	def ejecucion = load 'gradle.groovy'
 	                    ejecucion.call()
                 } else {
@@ -31,6 +30,7 @@ pipeline {
 
         failure{
             //[Nombre Alumno][Nombre Job][buildTool] Ejecución fallida en stage [Stage]
+            //la variable env.TAREA esta definida en los groovy
             slackSend color: 'danger', message: "[Rodrigo Zuniga][${env.JOB_NAME}][${env.HERRAMIENTA}]Ejecución fallida en stage [${env.TAREA}]"                   
         }
     }
