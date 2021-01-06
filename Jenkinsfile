@@ -1,3 +1,3 @@
-library 'pipeline_rodrigo'
+library 'pipeline-rodrigo-cicd'
 
 ejecucion.call()
